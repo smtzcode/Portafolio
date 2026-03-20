@@ -4,35 +4,9 @@
 
 const desplazador = document.getElementById('desplazador');
 
-/* ══ CURSOR ══ */
+/* ══ CURSOR — nativo, sin custom cursor ══ */
 if (window.matchMedia('(pointer: fine)').matches) {
-    const punto = document.getElementById('puntero');
-    const anillo = document.getElementById('anillo-puntero');
-    let ratonX = 0, ratonY = 0, anilloX = 0, anilloY = 0;
 
-    document.addEventListener('mousemove', e => { ratonX = e.clientX; ratonY = e.clientY; });
-
-    (function animar() {
-        punto.style.left = ratonX + 'px';
-        punto.style.top = ratonY + 'px';
-        anilloX += (ratonX - anilloX) * .13;
-        anilloY += (ratonY - anilloY) * .13;
-        anillo.style.left = anilloX + 'px';
-        anillo.style.top = anilloY + 'px';
-        requestAnimationFrame(animar);
-    })();
-
-    document.querySelectorAll('a,.boton,.boton-icono,.fila-proyecto,.btn-idioma,.boton-ver-titulo,#lightbox-cerrar,.boton-arriba').forEach(el => {
-        el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
-        el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
-    });
-
-    const elContacto = document.getElementById('contacto');
-    if (elContacto) {
-        new IntersectionObserver(es => {
-            es.forEach(e => document.body.classList.toggle('en-contacto', e.isIntersecting));
-        }, { threshold: 0.5, root: desplazador }).observe(elContacto);
-    }
 }
 
 /* ══ SMOOTH SCROLL ══ */
@@ -51,12 +25,37 @@ function aplicarIdioma(lang) {
     document.querySelectorAll('.btn-idioma').forEach(b => b.classList.toggle('activo', b.dataset.lang === lang));
     document.documentElement.lang = lang;
     document.querySelectorAll('[data-es]').forEach(el => {
+        // Saltar el titulo-contacto — lo maneja el typewriter por separado
+        if (el.classList.contains('titulo-contacto')) return;
         const txt = el.getAttribute('data-' + lang);
         if (!txt) return;
         if (/<[a-z][\s\S]*>/i.test(txt)) el.innerHTML = txt;
         else el.textContent = txt;
     });
+    // Actualizar el titulo-contacto respetando el typewriter
+    const tituloContacto = document.querySelector('.titulo-contacto');
+    if (tituloContacto) {
+        const nuevoTexto = tituloContacto.getAttribute('data-' + lang);
+        if (nuevoTexto) {
+            // Guardar el nuevo texto para cuando el typewriter se vuelva a disparar
+            tituloContacto.dataset.textoOriginal = nuevoTexto.replace(/\\n/g, '\n');
+            // Si la sección contacto es visible, actualizar el texto directamente
+            const secC = document.getElementById('contacto');
+            if (secC && secC.classList.contains('efecto-contacto')) {
+                tituloContacto.innerHTML = nuevoTexto.replace(/\n/g, '<br/>');
+            }
+        }
+    }
     document.title = lang === 'es' ? 'Jakob Ponce — Ingeniero Fullstack' : 'Jakob Ponce — Fullstack Engineer';
+    // Actualizar tooltip de nav dots según idioma
+    document.querySelectorAll('.nav-dot').forEach(dot => {
+        const txt = dot.getAttribute('data-' + lang);
+        if (txt) {
+            dot.title = txt;
+            // CSS attr() solo lee data-es; para EN usamos un pseudo-elemento via CSS var
+            dot.style.setProperty('--dot-label', '"' + txt + '"');
+        }
+    });
 }
 
 document.querySelectorAll('.btn-idioma').forEach(b => {
@@ -85,15 +84,45 @@ function cerrarLightbox() {
 document.querySelectorAll('.boton-ver-titulo').forEach(btn => {
     btn.addEventListener('click', () => abrirLightbox(btn.dataset.src, btn.dataset.caption));
 });
-
 lbCerrar.addEventListener('click', cerrarLightbox);
 lightbox.addEventListener('click', e => { if (e.target === lightbox) cerrarLightbox(); });
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.classList.contains('abierto')) cerrarLightbox(); });
 
-/* ══════════════════════════════════════
-   ANIMACIONES POR SECCIÓN
-   Re-disparo completo al volver
-══════════════════════════════════════ */
+
+/* ══ NAV DOTS ══ */
+(function () {
+    const dots = document.querySelectorAll('.nav-dot');
+    const secciones = document.querySelectorAll('.seccion');
+
+    // Clic en dot → scroll a sección
+    dots.forEach(dot => {
+        dot.addEventListener('click', () => {
+            const sec = document.getElementById(dot.dataset.seccion);
+            if (sec) sec.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // Observer — activa el dot de la sección visible
+    const obsDots = new IntersectionObserver(entradas => {
+        entradas.forEach(e => {
+            if (!e.isIntersecting) return;
+            dots.forEach(d => d.classList.remove('activo'));
+            const dot = document.querySelector('.nav-dot[data-seccion="' + e.target.id + '"]');
+            if (dot) dot.classList.add('activo');
+
+            // Clase en-contacto para invertir colores en sección oscura
+            if (e.target.id === 'contacto') document.body.classList.add('en-contacto');
+            else document.body.classList.remove('en-contacto');
+        });
+    }, { threshold: 0.5, root: desplazador });
+
+    secciones.forEach(s => obsDots.observe(s));
+
+    // Actualizar tooltips al cambiar idioma
+    const aplicarIdiomaOriginal = window._aplicarIdiomaNav;
+})();
+
+/* ══ ANIMACIONES POR SECCIÓN (re-disparo al volver) ══ */
 const EFECTOS = {
     presentacion: 'efecto-presentacion',
     proceso: 'efecto-proceso',
@@ -103,7 +132,7 @@ const EFECTOS = {
     contacto: 'efecto-contacto',
 };
 
-new IntersectionObserver(entradas => {
+const obsSecciones = new IntersectionObserver(entradas => {
     entradas.forEach(e => {
         const clase = EFECTOS[e.target.id];
         if (!clase) return;
@@ -118,50 +147,11 @@ new IntersectionObserver(entradas => {
             setTimeout(() => e.target.classList.remove(clase), 500);
         }
     });
-}, { threshold: 0.45, root: desplazador }).observe
-    ? (() => {
-        const obs = new IntersectionObserver(entradas => {
-            entradas.forEach(e => {
-                const clase = EFECTOS[e.target.id];
-                if (!clase) return;
-                if (e.isIntersecting) {
-                    e.target.classList.add(clase);
-                    e.target.querySelectorAll('.aparece').forEach((el, i) => {
-                        el.classList.remove('visible');
-                        void el.offsetWidth;
-                        setTimeout(() => el.classList.add('visible'), 60 + i * 80);
-                    });
-                } else {
-                    setTimeout(() => e.target.classList.remove(clase), 500);
-                }
-            });
-        }, { threshold: 0.45, root: desplazador });
-        document.querySelectorAll('.seccion').forEach(s => obs.observe(s));
-    })()
-    : null;
+}, { threshold: 0.45, root: desplazador });
 
-// Asegurar que el observer se crea correctamente
-(function () {
-    const obs = new IntersectionObserver(entradas => {
-        entradas.forEach(e => {
-            const clase = EFECTOS[e.target.id];
-            if (!clase) return;
-            if (e.isIntersecting) {
-                e.target.classList.add(clase);
-                e.target.querySelectorAll('.aparece').forEach((el, i) => {
-                    el.classList.remove('visible');
-                    void el.offsetWidth;
-                    setTimeout(() => el.classList.add('visible'), 60 + i * 80);
-                });
-            } else {
-                setTimeout(() => e.target.classList.remove(clase), 500);
-            }
-        });
-    }, { threshold: 0.45, root: desplazador });
-    document.querySelectorAll('.seccion').forEach(s => obs.observe(s));
-})();
+document.querySelectorAll('.seccion').forEach(s => obsSecciones.observe(s));
 
-/* ══ PROCESO — escalones ══ */
+/* ══ PROCESO — escalones en cascada ══ */
 const secProceso = document.getElementById('proceso');
 if (secProceso) {
     new IntersectionObserver(es => {
@@ -182,7 +172,7 @@ if (secProyectos) {
     new IntersectionObserver(es => {
         es.forEach(e => {
             if (!e.isIntersecting) return;
-            e.target.querySelectorAll('.numero-proyecto').forEach((num, i) => {
+            e.target.querySelectorAll(".card-proyecto-num").forEach((num, i) => {
                 const final = num.dataset.final || num.textContent.trim();
                 num.dataset.final = final;
                 let frame = 0;
@@ -229,7 +219,11 @@ if (secContacto) {
             if (!e.isIntersecting) return;
             const titulo = e.target.querySelector('.titulo-contacto');
             if (!titulo) return;
-            const original = titulo.dataset.textoOriginal || titulo.innerText;
+            // Usa el texto del idioma actual (guardado en textoOriginal por aplicarIdioma)
+            const attrTexto = titulo.getAttribute('data-' + idiomaActual);
+            const original = attrTexto
+                ? attrTexto.replace(/\\n/g, '\n')
+                : (titulo.dataset.textoOriginal || titulo.innerText);
             titulo.dataset.textoOriginal = original;
             titulo.innerHTML = '';
             titulo.classList.add('titulo-escribiendo');

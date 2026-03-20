@@ -21,7 +21,8 @@
     <meta name="twitter:title" content="Jakob Ponce — Ingeniero Fullstack" />
     <meta name="twitter:description" content="Transformo ideas en productos digitales reales." />
     <meta name="twitter:image" content="https://jakobponce.vercel.app/img/og-cover.jpg" />
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="img/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="img/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap"
@@ -47,6 +48,20 @@
         </div>
     </div>
 
+
+    <!-- ══ NAV DOTS ══ -->
+    <nav id="nav-dots" aria-label="Navegación por secciones">
+        <button class="nav-dot activo" data-seccion="presentacion" data-es="Inicio" data-en="Home"
+            title="Inicio"></button>
+        <button class="nav-dot" data-seccion="proceso" data-es="Proceso" data-en="Process" title="Proceso"></button>
+        <button class="nav-dot" data-seccion="herramientas" data-es="Herramientas" data-en="Tools"
+            title="Herramientas"></button>
+        <button class="nav-dot" data-seccion="proyectos" data-es="Proyectos" data-en="Projects"
+            title="Proyectos"></button>
+        <button class="nav-dot" data-seccion="educacion" data-es="Educación" data-en="Education"
+            title="Educación"></button>
+        <button class="nav-dot" data-seccion="contacto" data-es="Contacto" data-en="Contact" title="Contacto"></button>
+    </nav>
     <div id="desplazador">
 
         <!-- ══ 1. PRESENTACIÓN ══ -->
@@ -261,43 +276,41 @@
                 <p class="etiqueta-seccion aparece">// <span data-es="Proyectos" data-en="Projects">Proyectos</span></p>
                 <h2 class="titulo-seccion aparece" data-es="Lo que construyo" data-en="What I Build">Lo que construyo
                 </h2>
-                <div class="separador-corto aparece"></div>
-                <a href="https://github.com/smtzcode/Portafolio" target="_blank" class="fila-proyecto aparece">
-                    <span class="numero-proyecto">01</span>
-                    <div>
-                        <div class="nombre-proyecto" data-es="Portafolio Personal" data-en="Personal Portfolio">
+
+                <div class="grid-proyectos">
+
+                    <a href="https://github.com/smtzcode/Portafolio" target="_blank" class="card-proyecto aparece">
+                        <span class="card-proyecto-num">01</span>
+                        <div class="card-proyecto-titulo" data-es="Portafolio Personal" data-en="Personal Portfolio">
                             Portafolio Personal</div>
-                        <div class="meta-proyecto">HTML · CSS · JavaScript · Vercel</div>
-                    </div>
-                    <span class="flecha-proyecto">↗</span>
-                </a>
-                <a href="https://github.com/smtzcode/M3U-EDITOR" target="_blank" class="fila-proyecto aparece">
-                    <span class="numero-proyecto">02</span>
-                    <div>
-                        <div class="nombre-proyecto" data-es="Editor de Listas M3U" data-en="M3U Playlist Editor">Editor
-                            de Listas M3U</div>
-                        <div class="meta-proyecto">PHP · MySQL · JavaScript</div>
-                    </div>
-                    <span class="flecha-proyecto">↗</span>
-                </a>
-                <a href="https://github.com/smtzcode" target="_blank" class="fila-proyecto aparece">
-                    <span class="numero-proyecto">03</span>
-                    <div>
-                        <div class="nombre-proyecto" data-es="Aplicación de Gestión" data-en="Management App">Aplicación
-                            de Gestión</div>
-                        <div class="meta-proyecto">React · Node.js · API</div>
-                    </div>
-                    <span class="flecha-proyecto">↗</span>
-                </a>
-                <a href="https://github.com/smtzcode" target="_blank" class="fila-proyecto aparece">
-                    <span class="numero-proyecto">04</span>
-                    <div>
-                        <div class="nombre-proyecto" data-es="Ver más repositorios →" data-en="More repositories →">Ver
-                            más repositorios →</div>
-                        <div class="meta-proyecto">github.com/smtzcode</div>
-                    </div>
-                    <span class="flecha-proyecto">↗</span>
-                </a>
+                        <div class="card-proyecto-stack">HTML · CSS · JavaScript · Vercel</div>
+                        <span class="card-proyecto-flecha">↗</span>
+                    </a>
+
+                    <a href="https://github.com/smtzcode/M3U-EDITOR" target="_blank" class="card-proyecto aparece">
+                        <span class="card-proyecto-num">02</span>
+                        <div class="card-proyecto-titulo" data-es="Editor de Listas M3U" data-en="M3U Playlist Editor">
+                            Editor de Listas M3U</div>
+                        <div class="card-proyecto-stack">PHP · MySQL · JavaScript</div>
+                        <span class="card-proyecto-flecha">↗</span>
+                    </a>
+
+                    <a href="https://github.com/smtzcode" target="_blank" class="card-proyecto aparece">
+                        <span class="card-proyecto-num">03</span>
+                        <div class="card-proyecto-titulo" data-es="Aplicación de Gestión" data-en="Management App">
+                            Aplicación de Gestión</div>
+                        <div class="card-proyecto-stack">React · Node.js · API</div>
+                        <span class="card-proyecto-flecha">↗</span>
+                    </a>
+
+                    <a href="https://github.com/smtzcode" target="_blank"
+                        class="card-proyecto card-proyecto--mas aparece">
+                        <div class="card-proyecto-titulo" data-es="Ver más en GitHub" data-en="More on GitHub">Ver más
+                            en GitHub</div>
+                        <span class="card-proyecto-flecha">↗</span>
+                    </a>
+
+                </div>
             </div>
             <div class="flecha-desliza"><span data-es="DESLIZA" data-en="SCROLL">DESLIZA</span><svg viewBox="0 0 24 24">
                     <path d="M12 5v14M5 12l7 7 7-7" />
