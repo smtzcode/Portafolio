@@ -5,18 +5,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jakob Ponce — Ingeniero Fullstack</title>
+    <meta name="description"
+        content="Ingeniero Fullstack y de Experiencia del Usuario. Transformo ideas en productos digitales reales — diseño, servidor y despliegue." />
+    <meta name="author" content="Jakob Sebastian Ponce Martinez" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jakobponce.vercel.app/" />
+    <meta property="og:title" content="Jakob Ponce — Ingeniero Fullstack" />
+    <meta property="og:description"
+        content="Transformo ideas en productos digitales reales. Diseño la interfaz, construyo el servidor y conecto todo con código limpio." />
+    <meta property="og:image" content="https://jakobponce.vercel.app/img/og-cover.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="es_EC" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Jakob Ponce — Ingeniero Fullstack" />
+    <meta name="twitter:description" content="Transformo ideas en productos digitales reales." />
+    <meta name="twitter:image" content="https://jakobponce.vercel.app/img/og-cover.jpg" />
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@400;500;600;700&display=swap"
         rel="stylesheet" />
-
-    <link rel="stylesheet" href="Css/estilos.css">
-
+    <link rel="stylesheet" href="Css/estilos.css" />
 </head>
 
 <body>
     <div id="puntero"></div>
     <div id="anillo-puntero"></div>
+
+    <div id="selector-idioma">
+        <button class="btn-idioma activo" data-lang="es">ES</button>
+        <span class="sep-idioma">/</span>
+        <button class="btn-idioma" data-lang="en">EN</button>
+    </div>
+
+    <div id="lightbox" role="dialog" aria-modal="true">
+        <button id="lightbox-cerrar" aria-label="Cerrar">✕</button>
+        <div id="lightbox-contenido">
+            <img id="lightbox-img" src="" alt="Título académico" />
+            <p id="lightbox-caption"></p>
+        </div>
+    </div>
 
     <div id="desplazador">
 
@@ -53,27 +82,36 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="columna-derecha">
                     <div>
                         <h1 class="nombre">Jakob Sebastian Ponce Martinez</h1>
                         <div class="separador"></div>
                     </div>
-                    <div class="cargo">Ingeniero Fullstack y<br />Experiencia del Usuario</div>
+                    <div class="cargo" data-es="Ingeniero Fullstack y<br />Experiencia del Usuario"
+                        data-en="Fullstack Engineer &amp;<br />User Experience">
+                        Ingeniero Fullstack y<br />Experiencia del Usuario
+                    </div>
                     <div class="caja-descripcion">
-                        <h2>¿Qué hago?</h2>
+                        <h2 data-es="¿Qué hago?" data-en="What I do">¿Qué hago?</h2>
                         <div class="separador-corto"></div>
-                        <p>Transformo ideas en productos digitales reales. Diseño la interfaz, construyo el servidor y
-                            conecto todo con código limpio y estructurado — de la primera línea al despliegue final.</p>
+                        <p data-es="Transformo ideas en productos digitales reales. Diseño la interfaz, construyo el servidor y conecto todo con código limpio y estructurado — de la primera línea al despliegue final."
+                            data-en="I turn ideas into real digital products. I design the interface, build the server, and wire everything with clean, structured code — from the first line to final deployment.">
+                            Transformo ideas en productos digitales reales. Diseño la interfaz, construyo el servidor y
+                            conecto todo con código limpio y estructurado — de la primera línea al despliegue final.
+                        </p>
                     </div>
                     <div class="fila-botones">
-                        <a href="#proyectos" class="boton boton-borde">Lo que construyo</a>
-                        <a href="#contacto" class="boton boton-relleno">Contacto</a>
+                        <a href="#proyectos" class="boton boton-borde" data-es="Lo que construyo" data-en="My Work">Lo
+                            que construyo</a>
+                        <a href="#contacto" class="boton boton-relleno" data-es="Contacto"
+                            data-en="Contact">Contacto</a>
+                        <a href="img/cv-jakob-ponce.pdf" download class="boton boton-cv" data-es="↓ Descargar CV"
+                            data-en="↓ Download CV">↓ Descargar CV</a>
                     </div>
                 </div>
             </div>
             <div class="flecha-desliza">
-                DESLIZA
+                <span data-es="DESLIZA" data-en="SCROLL">DESLIZA</span>
                 <svg viewBox="0 0 24 24">
                     <path d="M12 5v14M5 12l7 7 7-7" />
                 </svg>
@@ -83,48 +121,51 @@
         <!-- ══ 2. PROCESO ══ -->
         <section class="seccion" id="proceso">
             <div class="contenedor-seccion">
-                <p class="etiqueta-seccion aparece">// Proceso</p>
-                <h2 class="titulo-seccion aparece">Pensamiento de Sistemas</h2>
+                <p class="etiqueta-seccion aparece">// <span data-es="Proceso" data-en="Process">Proceso</span></p>
+                <h2 class="titulo-seccion aparece" data-es="Pensamiento de Sistemas" data-en="Systems Thinking">
+                    Pensamiento de Sistemas</h2>
                 <div class="escalera aparece">
                     <div class="escalon">
                         <div class="icono-escalon">🧠</div>
-                        <div class="barra-escalon"><span class="etiqueta-escalon">Mapeo de<br />Requisitos</span></div>
+                        <div class="barra-escalon"><span class="etiqueta-escalon" data-es="Mapeo de<br/>Requisitos"
+                                data-en="Requirements<br/>Mapping">Mapeo de<br />Requisitos</span></div>
                     </div>
                     <div class="escalon">
                         <div class="icono-escalon">⚙️</div>
-                        <div class="barra-escalon"><span class="etiqueta-escalon">Arquitectura<br />Empresarial</span>
-                        </div>
+                        <div class="barra-escalon"><span class="etiqueta-escalon" data-es="Arquitectura<br/>Empresarial"
+                                data-en="Enterprise<br/>Architecture">Arquitectura<br />Empresarial</span></div>
                     </div>
                     <div class="escalon">
                         <div class="icono-escalon">&lt;/&gt;</div>
-                        <div class="barra-escalon"><span class="etiqueta-escalon">Integración<br />Completa</span></div>
+                        <div class="barra-escalon"><span class="etiqueta-escalon" data-es="Integración<br/>Completa"
+                                data-en="Full-Stack<br/>Integration">Integración<br />Completa</span></div>
                     </div>
                     <div class="escalon">
                         <div class="icono-escalon">🤖</div>
-                        <div class="barra-escalon"><span class="etiqueta-escalon">Automatización<br />Inteligente</span>
-                        </div>
+                        <div class="barra-escalon"><span class="etiqueta-escalon"
+                                data-es="Automatización<br/>Inteligente"
+                                data-en="Intelligent<br/>Automation">Automatización<br />Inteligente</span></div>
                     </div>
                     <div class="escalon">
                         <div class="icono-escalon">🌴</div>
-                        <div class="barra-escalon"><span class="etiqueta-escalon">Integridad<br />Operacional</span>
-                        </div>
+                        <div class="barra-escalon"><span class="etiqueta-escalon" data-es="Integridad<br/>Operacional"
+                                data-en="Operational<br/>Integrity">Integridad<br />Operacional</span></div>
                     </div>
                 </div>
             </div>
-            <div class="flecha-desliza">
-                DESLIZA
-                <svg viewBox="0 0 24 24">
+            <div class="flecha-desliza"><span data-es="DESLIZA" data-en="SCROLL">DESLIZA</span><svg viewBox="0 0 24 24">
                     <path d="M12 5v14M5 12l7 7 7-7" />
-                </svg>
-            </div>
+                </svg></div>
         </section>
 
         <!-- ══ 3. HERRAMIENTAS ══ -->
         <section class="seccion" id="herramientas">
             <div class="contenedor-seccion">
-                <p class="etiqueta-seccion aparece">// Herramientas</p>
+                <p class="etiqueta-seccion aparece">// <span data-es="Herramientas" data-en="Tools">Herramientas</span>
+                </p>
                 <div class="cabecera-herramientas">
-                    <h2 class="titulo-seccion aparece" style="margin-bottom:0;">Mis Herramientas</h2>
+                    <h2 class="titulo-seccion aparece" style="margin-bottom:0;" data-es="Mis Herramientas"
+                        data-en="My Toolset">Mis Herramientas</h2>
                     <div class="pastillas-ia aparece">
                         <div class="pastilla-ia">✦ Gemini</div>
                         <div class="pastilla-ia">✳ Claude</div>
@@ -167,8 +208,11 @@
                     </div>
                     <div class="tarjetas-categoria">
                         <div class="tarjeta-categoria">
-                            <div class="etiqueta-categoria">// Interfaz</div>
-                            <p>Construyo interfaces rápidas y accesibles con <strong>HTML, CSS y JS</strong> nativo, y
+                            <div class="etiqueta-categoria">// <span data-es="Interfaz"
+                                    data-en="Interface">Interfaz</span></div>
+                            <p data-es="Construyo interfaces rápidas y accesibles con <strong>HTML, CSS y JS</strong> nativo, y escalo con <strong>React</strong>. Priorizo la experiencia del usuario en cada componente."
+                                data-en="I build fast, accessible interfaces with native <strong>HTML, CSS &amp; JS</strong>, scaling with <strong>React</strong>. I prioritize user experience in every component.">
+                                Construyo interfaces rápidas y accesibles con <strong>HTML, CSS y JS</strong> nativo, y
                                 escalo con <strong>React</strong>. Priorizo la experiencia del usuario en cada
                                 componente.</p>
                             <div class="insignias-categoria">
@@ -177,10 +221,13 @@
                             </div>
                         </div>
                         <div class="tarjeta-categoria">
-                            <div class="etiqueta-categoria">// Servidor</div>
-                            <p><strong>PHP y MySQL</strong> forman el núcleo de mi lógica de servidor.
-                                <strong>Node.js</strong> me permite construir interfaces de programación eficientes y
-                                servicios en tiempo real.
+                            <div class="etiqueta-categoria">// <span data-es="Servidor" data-en="Server">Servidor</span>
+                            </div>
+                            <p data-es="<strong>PHP y MySQL</strong> forman el núcleo de mi lógica de servidor. <strong>Node.js</strong> me permite construir APIs eficientes y servicios en tiempo real."
+                                data-en="<strong>PHP and MySQL</strong> form the core of my server logic. <strong>Node.js</strong> lets me build efficient APIs and real-time services.">
+                                <strong>PHP y MySQL</strong> forman el núcleo de mi lógica de servidor.
+                                <strong>Node.js</strong> me permite construir APIs eficientes y servicios en tiempo
+                                real.
                             </p>
                             <div class="insignias-categoria">
                                 <div class="insignia">🐘</div>
@@ -188,8 +235,11 @@
                             </div>
                         </div>
                         <div class="tarjeta-categoria">
-                            <div class="etiqueta-categoria">// Diseño y Despliegue</div>
-                            <p>Con <strong>Figma</strong> traduzco requerimientos en interfaces que enamoran. Con
+                            <div class="etiqueta-categoria">// <span data-es="Diseño y Despliegue"
+                                    data-en="Design &amp; Deploy">Diseño y Despliegue</span></div>
+                            <p data-es="Con <strong>Figma</strong> traduzco requerimientos en interfaces que enamoran. Con <strong>Git, Vercel y Linux</strong> mantengo flujos limpios y despliegues confiables."
+                                data-en="With <strong>Figma</strong> I turn requirements into interfaces people love. With <strong>Git, Vercel &amp; Linux</strong> I keep clean workflows and reliable deploys.">
+                                Con <strong>Figma</strong> traduzco requerimientos en interfaces que enamoran. Con
                                 <strong>Git, Vercel y Linux</strong> mantengo flujos limpios y despliegues confiables.
                             </p>
                             <div class="insignias-categoria">
@@ -200,24 +250,23 @@
                     </div>
                 </div>
             </div>
-            <div class="flecha-desliza">
-                DESLIZA
-                <svg viewBox="0 0 24 24">
+            <div class="flecha-desliza"><span data-es="DESLIZA" data-en="SCROLL">DESLIZA</span><svg viewBox="0 0 24 24">
                     <path d="M12 5v14M5 12l7 7 7-7" />
-                </svg>
-            </div>
+                </svg></div>
         </section>
 
         <!-- ══ 4. PROYECTOS ══ -->
         <section class="seccion" id="proyectos">
             <div class="contenedor-seccion">
-                <p class="etiqueta-seccion aparece">// Proyectos</p>
-                <h2 class="titulo-seccion aparece">Lo que construyo</h2>
+                <p class="etiqueta-seccion aparece">// <span data-es="Proyectos" data-en="Projects">Proyectos</span></p>
+                <h2 class="titulo-seccion aparece" data-es="Lo que construyo" data-en="What I Build">Lo que construyo
+                </h2>
                 <div class="separador-corto aparece"></div>
                 <a href="https://github.com/smtzcode/Portafolio" target="_blank" class="fila-proyecto aparece">
                     <span class="numero-proyecto">01</span>
                     <div>
-                        <div class="nombre-proyecto">Portafolio Personal</div>
+                        <div class="nombre-proyecto" data-es="Portafolio Personal" data-en="Personal Portfolio">
+                            Portafolio Personal</div>
                         <div class="meta-proyecto">HTML · CSS · JavaScript · Vercel</div>
                     </div>
                     <span class="flecha-proyecto">↗</span>
@@ -225,7 +274,8 @@
                 <a href="https://github.com/smtzcode/M3U-EDITOR" target="_blank" class="fila-proyecto aparece">
                     <span class="numero-proyecto">02</span>
                     <div>
-                        <div class="nombre-proyecto">Editor de Listas M3U</div>
+                        <div class="nombre-proyecto" data-es="Editor de Listas M3U" data-en="M3U Playlist Editor">Editor
+                            de Listas M3U</div>
                         <div class="meta-proyecto">PHP · MySQL · JavaScript</div>
                     </div>
                     <span class="flecha-proyecto">↗</span>
@@ -233,113 +283,143 @@
                 <a href="https://github.com/smtzcode" target="_blank" class="fila-proyecto aparece">
                     <span class="numero-proyecto">03</span>
                     <div>
-                        <div class="nombre-proyecto">Aplicación de Gestión</div>
-                        <div class="meta-proyecto">React · Node.js · Interfaz de Programación</div>
+                        <div class="nombre-proyecto" data-es="Aplicación de Gestión" data-en="Management App">Aplicación
+                            de Gestión</div>
+                        <div class="meta-proyecto">React · Node.js · API</div>
                     </div>
                     <span class="flecha-proyecto">↗</span>
                 </a>
                 <a href="https://github.com/smtzcode" target="_blank" class="fila-proyecto aparece">
                     <span class="numero-proyecto">04</span>
                     <div>
-                        <div class="nombre-proyecto">Ver más repositorios →</div>
+                        <div class="nombre-proyecto" data-es="Ver más repositorios →" data-en="More repositories →">Ver
+                            más repositorios →</div>
                         <div class="meta-proyecto">github.com/smtzcode</div>
                     </div>
                     <span class="flecha-proyecto">↗</span>
                 </a>
             </div>
-            <div class="flecha-desliza">
-                DESLIZA
-                <svg viewBox="0 0 24 24">
+            <div class="flecha-desliza"><span data-es="DESLIZA" data-en="SCROLL">DESLIZA</span><svg viewBox="0 0 24 24">
                     <path d="M12 5v14M5 12l7 7 7-7" />
-                </svg>
-            </div>
+                </svg></div>
         </section>
 
-        <!-- ══ 5. EDUCACIÓN ══ -->
+        <!-- ══ 5. EDUCACIÓN — GRID ══ -->
         <section class="seccion" id="educacion">
             <div class="contenedor-seccion">
-                <p class="etiqueta-seccion aparece">// Educación</p>
-                <h2 class="titulo-seccion aparece">Formación Académica</h2>
-                <div class="separador-corto aparece"></div>
+                <p class="etiqueta-seccion aparece">// <span data-es="Educación" data-en="Education">Educación</span>
+                </p>
+                <h2 class="titulo-seccion aparece" data-es="Formación Académica" data-en="Education">Formación Académica
+                </h2>
 
-                <div class="linea-tiempo aparece">
+                <div class="grid-edu">
 
-                    <!-- UNACH — en curso, sin botón -->
-                    <div class="entrada-educacion activa">
-                        <div class="edu-anio">Actual</div>
-                        <div class="edu-punto"></div>
-                        <div class="edu-contenido">
-                            <div class="edu-institucion">Universidad Nacional de Chimborazo</div>
-                            <div class="edu-titulo">Comunicación Social</div>
-                            <div class="edu-lugar">Riobamba, Ecuador · En curso</div>
+                    <!-- ESPOCH -->
+                    <div class="card-edu aparece">
+                        <div class="card-edu-header">
+                            <div class="card-edu-tag" data-es="Ingeniería de Software" data-en="Software Engineering">
+                                Ingeniería de Software</div>
+                            <div class="card-edu-inst">Escuela Superior Politécnica de Chimborazo</div>
+                            <div class="card-edu-sep"></div>
                         </div>
-                    </div>
-
-                    <!-- ESPOCH — con botón ver título -->
-                    <div class="entrada-educacion">
-                        <div class="edu-anio">ESPOCH</div>
-                        <div class="edu-punto"></div>
-                        <div class="edu-contenido">
-                            <div class="edu-institucion">Escuela Superior Politécnica de Chimborazo</div>
-                            <div class="edu-titulo">Ingeniería de Software</div>
-                            <div class="edu-lugar">Riobamba, Ecuador</div>
-                            <a href="img/titulo-espoch.jpg" target="_blank" class="boton-titulo">
-                                Ver título
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round">
+                        <p class="card-edu-desc"
+                            data-es="Enfoque en Programación Orientada a Objetos, Desarrollo Web, Bases de Datos, Análisis de Datos y Gestión de Proyectos."
+                            data-en="Focus on Object-Oriented Programming, Web Development, Databases, Data Analysis, and Project Management.">
+                            Enfoque en Programación Orientada a Objetos, Desarrollo Web, Bases de Datos, Análisis de
+                            Datos y Gestión de Proyectos.
+                        </p>
+                        <div class="card-edu-footer">
+                            <span class="card-edu-lugar">Riobamba, Ecuador</span>
+                            <button class="boton-ver-titulo" data-src="img/titulo-espoch.jpg"
+                                data-caption="ESPOCH — Ingeniería de Software">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
-                            </a>
+                                <span data-es="Ver título" data-en="View degree">Ver título</span>
+                            </button>
                         </div>
                     </div>
 
-                    <!-- JUAN DE VELASCO — con botón ver título -->
-                    <div class="entrada-educacion">
-                        <div class="edu-anio">Colegio</div>
-                        <div class="edu-punto"></div>
-                        <div class="edu-contenido">
-                            <div class="edu-institucion">Unidad Educativa Juan de Velasco</div>
-                            <div class="edu-titulo">Bachillerato en Servicios Informáticos</div>
-                            <div class="edu-lugar">Riobamba, Ecuador</div>
-                            <a href="img/titulo-velasco.jpg" target="_blank" class="boton-titulo">
-                                Ver título
-                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round">
+                    <!-- UNACH -->
+                    <div class="card-edu card-edu--activa aparece">
+                        <div class="card-edu-header">
+                            <div class="card-edu-badge" data-es="En curso" data-en="In progress">En curso</div>
+                            <div class="card-edu-tag" data-es="Comunicación Social" data-en="Social Communication">
+                                Comunicación Social</div>
+                            <div class="card-edu-inst">Universidad Nacional de Chimborazo</div>
+                            <div class="card-edu-sep"></div>
+                        </div>
+                        <p class="card-edu-desc"
+                            data-es="Especialización en Administración de TI y UI/UX. Énfasis en estrategias de comunicación digital, diseño de interfaces y Experiencia de Usuario."
+                            data-en="Specialization in IT Administration &amp; UI/UX. Focus on digital communication strategies, attractive interface design, and User Experience (UX).">
+                            Especialización en Administración de TI y UI/UX. Énfasis en estrategias de comunicación
+                            digital, diseño de interfaces y Experiencia de Usuario.
+                        </p>
+                        <div class="card-edu-footer">
+                            <span class="card-edu-lugar">Riobamba, Ecuador</span>
+                        </div>
+                    </div>
+
+                    <!-- JUAN DE VELASCO -->
+                    <div class="card-edu aparece">
+                        <div class="card-edu-header">
+                            <div class="card-edu-tag" data-es="Bachillerato en Servicios Informáticos"
+                                data-en="Bachelor in IT Services">Bachillerato en Servicios Informáticos</div>
+                            <div class="card-edu-inst">Unidad Educativa Juan de Velasco</div>
+                            <div class="card-edu-sep"></div>
+                        </div>
+                        <p class="card-edu-desc"
+                            data-es="Formación técnica en informática, redes, mantenimiento de equipos y fundamentos de programación."
+                            data-en="Technical training in computing, networks, hardware maintenance, and programming fundamentals.">
+                            Formación técnica en informática, redes, mantenimiento de equipos y fundamentos de
+                            programación.
+                        </p>
+                        <div class="card-edu-footer">
+                            <span class="card-edu-lugar">Riobamba, Ecuador</span>
+                            <button class="boton-ver-titulo" data-src="img/titulo-velasco.jpg"
+                                data-caption="Juan de Velasco — Bachillerato en Servicios Informáticos">
+                                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.5" stroke-linecap="round">
                                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
                                     <polyline points="15 3 21 3 21 9" />
                                     <line x1="10" y1="14" x2="21" y2="3" />
                                 </svg>
-                            </a>
+                                <span data-es="Ver título" data-en="View degree">Ver título</span>
+                            </button>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="flecha-desliza">
-                DESLIZA
-                <svg viewBox="0 0 24 24">
+            <div class="flecha-desliza"><span data-es="DESLIZA" data-en="SCROLL">DESLIZA</span><svg viewBox="0 0 24 24">
                     <path d="M12 5v14M5 12l7 7 7-7" />
-                </svg>
-            </div>
+                </svg></div>
         </section>
+
         <!-- ══ 6. CONTACTO ══ -->
         <section class="seccion" id="contacto">
             <div class="interior-contacto">
-                <p class="etiqueta-seccion aparece" style="color:rgba(240,237,232,.45);">// Contacto</p>
-                <h2 class="titulo-contacto aparece">¿Tienes un<br />proyecto?</h2>
+                <p class="etiqueta-seccion aparece" style="color:rgba(240,237,232,.45);">// <span data-es="Contacto"
+                        data-en="Contact">Contacto</span></p>
+                <h2 class="titulo-contacto aparece" data-es="¿Tienes un\nproyecto?" data-en="Got a\nproject?">¿Tienes
+                    un<br />proyecto?</h2>
                 <div class="enlaces-contacto aparece">
                     <a href="#" onclick="window.location='ma'+'ilto:'+'sekjac22'+'@'+'gmail.com';return false;"
-                        class="enlace-contacto relleno">Correo</a>
+                        class="enlace-contacto relleno" data-es="Correo" data-en="Email">Correo</a>
                     <a href="https://github.com/smtzcode" target="_blank" class="enlace-contacto">GitHub</a>
                     <a href="https://www.linkedin.com/in/jakob-sebastian-ponce-martinez-6aab443b7/" target="_blank"
                         class="enlace-contacto">LinkedIn</a>
+                    <a href="img/cv-jakob-ponce.pdf" download class="enlace-contacto relleno" data-es="↓ CV"
+                        data-en="↓ CV">↓ CV</a>
                 </div>
                 <div class="pie-pagina aparece">
+                    <span>© 2025 Jakob Ponce</span>
                     <a href="#presentacion" class="boton-arriba"
                         onclick="document.getElementById('presentacion').scrollIntoView({behavior:'smooth'});return false;">
-                        Volver arriba
+                        <span data-es="Volver arriba" data-en="Back to top">Volver arriba</span>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round">
                             <path d="M12 19V5M5 12l7-7 7 7" />
@@ -349,8 +429,7 @@
             </div>
         </section>
 
-    </div><!-- /desplazador -->
-
+    </div>
     <script src="js/principal.js"></script>
 </body>
 
