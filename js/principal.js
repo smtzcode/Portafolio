@@ -63,10 +63,10 @@ document.querySelectorAll('.btn-idioma').forEach(b => {
 });
 
 /* ══ LIGHTBOX ══ */
-const lightbox = document.getElementById('lightbox');
-const lbImg = document.getElementById('lightbox-img');
+const lightbox  = document.getElementById('lightbox');
+const lbImg     = document.getElementById('lightbox-img');
 const lbCaption = document.getElementById('lightbox-caption');
-const lbCerrar = document.getElementById('lightbox-cerrar');
+const lbCerrar  = document.getElementById('lightbox-cerrar');
 
 function abrirLightbox(src, caption) {
     lbImg.src = src; lbImg.alt = caption;
@@ -90,7 +90,7 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.c
 
 
 /* ══ NAV DOTS ══ */
-(function () {
+(function() {
     const dots = document.querySelectorAll('.nav-dot');
     const secciones = document.querySelectorAll('.seccion');
 
@@ -125,11 +125,11 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && lightbox.c
 /* ══ ANIMACIONES POR SECCIÓN (re-disparo al volver) ══ */
 const EFECTOS = {
     presentacion: 'efecto-presentacion',
-    proceso: 'efecto-proceso',
+    proceso:      'efecto-proceso',
     herramientas: 'efecto-herramientas',
-    proyectos: 'efecto-proyectos',
-    educacion: 'efecto-educacion',
-    contacto: 'efecto-contacto',
+    proyectos:    'efecto-proyectos',
+    educacion:    'efecto-educacion',
+    contacto:     'efecto-contacto',
 };
 
 const obsSecciones = new IntersectionObserver(entradas => {
@@ -180,7 +180,7 @@ if (secProyectos) {
                 num.classList.add('num-glitch');
                 const tick = setInterval(() => {
                     if (frame >= 12) { num.textContent = final; num.classList.remove('num-glitch'); clearInterval(tick); return; }
-                    num.textContent = chars[Math.floor(Math.random() * chars.length)] + chars[Math.floor(Math.random() * chars.length)];
+                    num.textContent = chars[Math.floor(Math.random()*chars.length)] + chars[Math.floor(Math.random()*chars.length)];
                     frame++;
                 }, 40 + i * 20);
             });
